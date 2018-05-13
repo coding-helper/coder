@@ -67,7 +67,7 @@
             this.optForm.${optName!}.id = data.id;
 <#list opt.attrs as attr>
 <#if attr.code! != "id" >
-            this.optForm.${optName!}.${attr.code!} = data.${attr.code!}.toString();
+            this.optForm.${optName!}.${attr.code!} = data.${attr.code!};
 </#if>
 </#list>        
         },

@@ -10,7 +10,8 @@
                     sortable: true,
 <#if attr.type! == "select" || attr.type! == "radio">
                     render: (h, params) => {
-                        return this.dict.${attr.code!}.filter(item => params.row.${attr.code!} == item.value).map(item => item.label);
+                        let value = this.dict.${attr.code!}.filter(item => params.row.${attr.code!} == item.value).map(item => item.label);
+                        return h('span', value); 
                     },
 </#if>                    
                     align: 'center'
