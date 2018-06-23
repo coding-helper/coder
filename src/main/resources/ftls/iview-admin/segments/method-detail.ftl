@@ -14,7 +14,7 @@
 <#if opt.mode! == "modal" >
         showModal${optName?cap_first} (row) {
             let _self = this;
-            util.ajax.get('${opt.exeUrl!}?id=' + row.id).then(res => {
+            this.$http.get('${opt.exeUrl!}/' + row.id).then(res => {
                 if (res.status === 200) {
                     if (res.data.<#include "spec/res-success.ftl" />) {
 <#list opt.attrs as attr>

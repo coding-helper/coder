@@ -5,7 +5,9 @@
                     title: '${attr.name!}',
                     key: '${attr.code!}',
 <#if attr.type! != "textarea" >
+<#if attr_has_next>
                     width: 150,
+</#if>
 </#if>
                     sortable: true,
 <#if attr.type! == "select" || attr.type! == "radio">

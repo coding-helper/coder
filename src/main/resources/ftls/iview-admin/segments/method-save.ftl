@@ -19,13 +19,13 @@
 <#if opt.mode! == "modal" >
         showModal${optName?cap_first} (row) {
 	        if (row) {
-	            this.optModal.${optName!}.title = '编辑${opt.name!}';
+	            this.optModal.${optName!}.title = '${opt.name!}';
 <#if opt.preUrl! == "" >
             this.prepare${optName?cap_first}Form(row);
             this.optModal.${optName!}.loading = false;
 <#else>
 	            let _self = this;
-	            util.ajax.get('${opt.preUrl!}?id=' + row.id).then(res => {
+	            this.$http.get('${opt.preUrl!}/' + row.id).then(res => {
 	                if (res.status === 200) {
 	                    if (res.data.<#include "../spec/" + project.custom + "/res-success.ftl" />) {
 	                        _self.prepare${optName?cap_first}Form(res.data.content);
@@ -40,7 +40,7 @@
 	        } else {
 	            this.clear${optName?cap_first}Form ();
                 this.optModal.${optName!}.loading = false;
-	            this.optModal.${optName!}.title = '添加${opt.name!}';
+	            this.optModal.${optName!}.title = '${opt.name!}';
 	        }
             this.optModal.${optName!}.show = true;
         },
@@ -48,7 +48,7 @@
             let _self = this;
             this.$refs.${optName!}Form.validate((valid) => {
                 if (valid) {
-                    util.ajax.post('${opt.exeUrl!}<#if relaAttr! != "" >?${relaAttr}=' + this.optForm.${relaAttr}<#else>'</#if>, this.process${optName?cap_first}Form()).then(res => {
+                    this.$http.post('${opt.exeUrl!}<#if relaAttr! != "" >?${relaAttr}=' + this.optForm.${relaAttr}<#else>'</#if>, this.process${optName?cap_first}Form()).then(res => {
                         _self.getTableData();
                         _self.clear${optName?cap_first}Form ();
                         _self.optModal.${optName!}.show = false;

@@ -78,7 +78,7 @@ export default {
         do${optName}() {
             this.$refs.${optName!}Form.validate((valid) => {
                 if (valid) {
-	                util.ajax.post('${exeUrl}', this.optForm.${optName}).then(res => {
+	                this.$http.post('${exeUrl}', this.optForm.${optName}).then(res => {
 	                    if (res.status === 200) {
 	                        if (res.data.<#include "spec/" + project.custom + "/res-success.ftl" />) {
 	                            this.$Message.info(res.data.message); 

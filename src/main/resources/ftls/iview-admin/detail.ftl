@@ -69,7 +69,7 @@ export default {
     methods: {
         init () {
             let _self = this;
-            util.ajax.get('${exeUrl!}?id=' + this.$route.params.id).then(res => {
+            this.$http.get('${exeUrl!}/' + this.$route.params.id).then(res => {
                 if (res.status === 200) {
                     if (res.data.<#include "spec/" + project.custom + "/res-success.ftl" />) {
                         _self.perpare${optName?cap_first} (res.data.content);

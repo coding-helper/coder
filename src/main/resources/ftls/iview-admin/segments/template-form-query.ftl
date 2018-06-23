@@ -1,19 +1,22 @@
 <#if opt.attrs? size gt 0 >
     <p slot="title">${opt.name!}</p>
 <#assign optName = "queryForm" />
-    <Form :model="optForm.${optName!}" :label-width="100">
+    <Form :model="optForm.${optName!}" :label-width="150">
         <Row>
 <#if opt.attrs? size == 0 >
         </Row>
 <#else>
 <#list opt.attrs as attr >
-            <Col span="11">
+            <Col span="7">
                 <FormItem label="${attr.name!}" prop="${attr.code!}">
 <#include "template-formitem-component.ftl" />
                 </FormItem>
             </Col>
+<#if (attr_index + 1) % 3 != 0 >
+            <Col span="1">&nbsp;</Col>
+</#if>
 <#if attr_has_next>
-<#if (attr_index + 1) % 2 == 0 >
+<#if (attr_index + 1) % 3 == 0 >
         </Row>
         <Row>
 </#if>

@@ -2,7 +2,7 @@
 <#if opt.mode! == "modal" && opt.type! == "detail" >
 <#assign optName = opt.code + opt.type?cap_first />
 <#assign spaces = "    "/>
-<Modal width="800" v-model="optModal.${optName!}.show" :mask-closable="false" @on-ok="optModal.${optName!}.show = false" :title="optModal.${optName!}.title">
+<Modal width="1000" v-model="optModal.${optName!}.show" :mask-closable="false" @on-ok="optModal.${optName!}.show = false" :title="optModal.${optName!}.title">
     <Card :bordered="false" dis-hover>
         <Row>
             <Col span="3">&nbsp;</Col>

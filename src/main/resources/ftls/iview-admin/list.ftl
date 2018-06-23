@@ -115,7 +115,7 @@ export default {
 </#if>
 </#list>
 </#if>
-            util.ajax.get('${getTableDataUrl!}', { params: this.processQueryForm() }).then(res => {
+            this.$http.get('${getTableDataUrl!}', { params: this.processQueryForm() }).then(res => {
                 if (res.status === 200) {
                     if (res.data.<#include "spec/" + project.custom + "/res-success.ftl" />) {
 <#include "spec/" + project.custom + "/res-pageable.ftl" />

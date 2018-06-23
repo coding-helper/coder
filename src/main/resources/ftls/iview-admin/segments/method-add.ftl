@@ -15,7 +15,7 @@
             let _self = this;
             this.$refs.${optName!}Form.validate((valid) => {
                 if (valid) {
-		            util.ajax.post('${opt.exeUrl!}', this.process${optName?cap_first}Form()).then(res => {
+		            this.$http.post('${opt.exeUrl!}', this.process${optName?cap_first}Form()).then(res => {
 		                _self.getTableData();
 		                _self.clear${optName?cap_first}Form ();
 		                _self.optModal.${optName!}.show = false;

@@ -1,6 +1,6 @@
         do${optName?cap_first} () {
             let _self = this;
-            util.ajax.post('${opt.exeUrl!}<#if relaAttr! != "" >?${relaAttr}=' + this.optForm.${relaAttr}<#else>'</#if>, this.optForm.queryForm).then(res => {
+            this.$http.post('${opt.exeUrl!}<#if relaAttr! != "" >?${relaAttr}=' + this.optForm.${relaAttr}<#else>'</#if>, this.optForm.queryForm).then(res => {
                 if (res.status === 200) {
                     if (res.data.<#include "../spec/" + project.custom + "/res-success.ftl" />) {
                         window.open(res.data.content);

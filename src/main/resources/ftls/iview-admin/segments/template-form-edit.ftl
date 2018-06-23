@@ -1,4 +1,4 @@
-${spaces!}    <Form ref="${optName!}Form" :model="optForm.${optName!}" :label-width="100" :rules="optRule.${optName}">
+${spaces!}    <Form ref="${optName!}Form" :model="optForm.${optName!}" :label-width="150" :rules="optRule.${optName}">
 ${spaces!}        <Row>
 <#if opt.attrs? size == 0 >
 ${spaces!}        </Row>

@@ -6,7 +6,7 @@
                 loading: true,
                 onOk: () => {
                     let _modal = this.$Modal;
-                    util.ajax.post('${opt.exeUrl!}?id=' + row.id).then(res => {
+                    this.$http.post('${opt.exeUrl!}/' + row.id).then(res => {
                         if (res.status === 200) {
                             if (res.data.<#include "../spec/" + project.custom + "/res-success.ftl" />) {
                                 _self.getTableData();

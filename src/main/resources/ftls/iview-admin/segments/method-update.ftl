@@ -16,7 +16,7 @@
                 loading: true,
                 onOk: () => {
                     let _modal = this.$Modal;
-                    util.ajax.post('${opt.exeUrl!}?id=' + row.id).then(res => {
+                    this.$http.post('${opt.exeUrl!}?id=' + row.id).then(res => {
                         if (res.status === 200) {
                             if (res.data.<#include "../spec/" + project.custom + "/res-success.ftl" />) {
                                 _self.getTableData();
@@ -34,7 +34,7 @@
             });
 <#elseif opt.mode! == "switch" >
             let _self = this;
-            util.ajax.post('${opt.exeUrl!}/' + row.id).then(res => {
+            this.$http.post('${opt.exeUrl!}/' + row.id).then(res => {
                 if (res.status === 200) {
                     if (res.data.<#include "../spec/" + project.custom + "/res-success.ftl" />) {
                         _self.getTableData();
@@ -55,7 +55,7 @@
             this.optModal.${optName!}.loading = false;
 <#else>
             let _self = this;
-            util.ajax.get('${opt.preUrl!}?id=' + row.id).then(res => {
+            this.$http.get('${opt.preUrl!}/' + row.id).then(res => {
                 if (res.status === 200) {
                     if (res.data.<#include "../spec/" + project.custom + "/res-success.ftl" />) {
                         _self.prepare${optName?cap_first}Form(res.data.content);
@@ -73,7 +73,7 @@
             let _self = this;
             this.$refs.${optName!}Form.validate((valid) => {
                 if (valid) {
-		            util.ajax.post('${opt.exeUrl!}', this.process${optName?cap_first}Form()).then(res => {
+		            this.$http.post('${opt.exeUrl!}', this.process${optName?cap_first}Form()).then(res => {
 		                _self.getTableData();
 		                _self.optModal.${optName!}.show = false;
 		                _self.$Message.info(res.data.message);
@@ -88,13 +88,13 @@
 		    });
         },
         prepare${optName?cap_first}Form (data) {
+            this.$refs.${optName}Form.resetFields();
             this.optForm.${optName!}.id = data.id;
 <#list opt.attrs as attr>
 <#if attr.code! != "id" >
             this.optForm.${optName!}.${attr.code!} = data.${attr.code!};
 </#if>
 </#list>
-            this.$refs.${optName}Form.resetFields();
         },
         process${optName?cap_first}Form () {
             let form = {
