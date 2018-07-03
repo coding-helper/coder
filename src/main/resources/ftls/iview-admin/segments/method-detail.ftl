@@ -28,5 +28,6 @@
                 console.log(err);
             });
             this.optModal.${optName!}.show = true;
+            this.$nextTick(() => _self.optModal.${optName!}.okLoading = true);
         },
 </#if>

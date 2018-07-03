@@ -49,6 +49,7 @@
             this.$refs.${optName}Form.resetFields();
         },
         cancel${optName?cap_first} () {
-            this.$refs.${optName}Form.resetFields();
+            this.optModal.${optName!}.loading = true;
+            this.$refs.${optName!}Form.resetFields();
         },
 </#if>
