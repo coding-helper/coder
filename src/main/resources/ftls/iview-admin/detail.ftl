@@ -36,7 +36,6 @@
 </Card>
 </div></template>
 <script>
-import util from '@/libs/util';
 export default {
     data () {
         return {

@@ -16,7 +16,7 @@
             let _self = this;
             this.$http.get('${opt.exeUrl!}/' + row.id).then(res => {
                 if (res.status === 200) {
-                    if (res.data.<#include "spec/res-success.ftl" />) {
+                    if (res.data.<#include "../spec/" + project.custom + "/res-success.ftl" />) {
 <#list opt.attrs as attr>
                         _self.optForm.${optName!}.${attr.code!} = res.data.content.${attr.code!};
 </#list>

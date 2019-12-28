@@ -43,7 +43,6 @@
 <#include "segments/template-modal-detail.ftl" />
 </div></template>
 <script>
-import util from '@/libs/util';
 export default {
     data () {
         return {
